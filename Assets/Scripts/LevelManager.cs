@@ -7,7 +7,6 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] float sceneLoadDelay = 2f;
     ScoreKeeper scoreKeeper;
-    ScoreKeeper scoreKeeperTest;
     
     void Awake()
     {
@@ -21,7 +20,8 @@ public class LevelManager : MonoBehaviour
     
     public void LoadGame()
     {        
-        //scoreKeeper.ResetScore();
+        // PROBLEM HAPPEN WHEN ResetScore() is called
+        scoreKeeper.ResetScore();
         SceneManager.LoadScene("Game");
     }
 
