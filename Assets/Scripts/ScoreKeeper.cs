@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreKeeper : MonoBehaviour
 {
     int score;
-    static ScoreKeeper instance;
+    public static ScoreKeeper Instance { get; private set; }
 
     void Awake()
     {
@@ -14,16 +14,14 @@ public class ScoreKeeper : MonoBehaviour
 
     void ManageSingleton()
     {
-        if (instance != null)
+        if (Instance != null && Instance != this)
         {
-            gameObject.SetActive(false);
-            Destroy(gameObject);
+            Destroy(this);
+            return;
         }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+
+        Instance = this;
+        DontDestroyOnLoad(this);
     }
 
     public int GetScore()

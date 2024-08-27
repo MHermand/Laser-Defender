@@ -12,13 +12,6 @@ public class UIDisplay : MonoBehaviour
 
     [Header("Score")]
     [SerializeField] TextMeshProUGUI scoreText;
-    ScoreKeeper scoreKeeper;
-
-    void Awake()
-    {
-        scoreKeeper = FindObjectOfType<ScoreKeeper>();
-    }
-
     
     void Start()
     {
@@ -28,6 +21,6 @@ public class UIDisplay : MonoBehaviour
     void Update()
     {
         healthSlider.value = playerHealth.GetHealth();
-        scoreText.text = scoreKeeper.GetScore().ToString("000000000");
+        scoreText.text = ScoreKeeper.Instance.GetScore().ToString("000000000");
     }
 }
